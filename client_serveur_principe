@@ -1,0 +1,33 @@
+# Server side:
+## Used functions:
+```c
+int fd = socket(AF_INET, SOCK_STREAM, 0);  // 1. create the socket
+
+bind(fd, ip, port);     // 2. attach to an ip/port
+
+listen(fd, backlog);    // 3. start listening
+
+int client = accept(fd, ...);  // 4. wait for a client (blocking)
+
+recv(client, buffer, size, 0); // 5. receive data
+send(client, buffer, size, 0); // 5. send data
+
+close(client);  // 6. close the client connection
+close(fd);      // 7. close the server
+```
+
+# Client side:
+## Used functions:
+```c
+int fd = socket(AF_INET, SOCK_STREAM, 0);  // 1. create the socket
+
+connect(fd, ip, port);  // 2. connect to the server
+
+send(fd, buffer, size, 0);   // 3. send data
+recv(fd, buffer, size, 0);   // 3. receive data
+
+close(fd);  // 4. close the connection
+```
+
+Fixed port for the server: 8080
+For the IP address, we can use "localhost"  
